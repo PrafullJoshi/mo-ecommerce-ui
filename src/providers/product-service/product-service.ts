@@ -12,11 +12,13 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ProductServiceProvider {
+  
   products: any;
-
   selectedProducts: any[] = [];
 
   productListEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/products";
+  loadDummyProductsEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/products/load";
+  
   constructor(public http: HttpClient) {
     console.log('Hello ProductServiceProvider Provider');
 
@@ -47,6 +49,12 @@ export class ProductServiceProvider {
         return response;
       });
     }
-    
+  }
+
+  loadDummyProducts(): Observable<any> {
+    return this.http.get(this.loadDummyProductsEndPoint)
+      .map(response => {
+        return response;
+      });
   }
 }

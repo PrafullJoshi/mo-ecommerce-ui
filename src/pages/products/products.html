@@ -14,6 +14,10 @@
 
 
 <ion-content padding>
+    <button *ngIf="!productsAvailable" ion-button outline (click)="loadDummyProducts()">
+        Load Dummy Products
+    </button>
+
   <ion-card *ngFor="let product of products">
       <ion-row>
           <ion-col col-2>
