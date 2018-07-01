@@ -1,0 +1,88 @@
+<!--
+  Generated template for the CartSummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Checkout Cart (Summary)</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+      <!-- <ion-card-content> -->
+          <ion-row>
+              <ion-col col-7>
+                  <button ion-button clear color="dark">
+                      Order Price:
+                  </button>
+              </ion-col>
+              <ion-col col-5>
+                  <button ion-button icon-start clear small>
+                    <ion-icon name="pricetag"></ion-icon>
+                    <div>
+                      {{orderPrice}} ₹ 
+                    </div>
+                  </button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-7>
+                    <button ion-button clear color="dark">
+                        Sales Tax:
+                    </button>
+                </ion-col>
+                <ion-col col-5>
+                    <button ion-button icon-start clear small>
+                      <ion-icon name="pricetag"></ion-icon>
+                      <div>
+                        {{orderTotalTax}} ₹ 
+                      </div>
+                    </button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <button ion-button full color="secondary" (click)="continueToCheckoutCart()">
+                          Checkout Cart - {{orderTotalPrice}} ₹ 
+                      </button>
+                    </ion-col>
+              </ion-row>
+      <!-- </ion-card-content> -->
+    </ion-card>
+    <ion-grid>
+      <ion-item>
+        <ion-row style="font-weight: bold;">   
+            <ion-col col-2 col-lg-1>Pr #</ion-col>
+            <ion-col col-8 col-lg-3>Name</ion-col>
+            <ion-col col-2 col-lg-1>Cat</ion-col>
+            <ion-col col-3 col-lg-2>Price</ion-col>
+            <ion-col col-3 col-lg-1>Tax %</ion-col>
+            <ion-col col-3 col-lg-2>Total Tax</ion-col>
+            <ion-col col-3 col-lg-2>Total Price</ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item *ngFor="let product of products">
+        <ion-row>
+            <ion-col col-2 col-lg-1>{{product.productId}}</ion-col>
+            <ion-col col-8 col-lg-3>
+              {{product.name}} - 
+              <p>{{product.description}}</p>
+            </ion-col>
+            <ion-col col-2 col-lg-1>
+              {{product.category.categoryType}}
+            </ion-col>
+            <ion-col col-3 col-lg-2>{{product.price}}₹ </ion-col>
+            <ion-col col-3 col-lg-1>{{product.category.taxPercentage}} %</ion-col>
+            <ion-col col-3 col-lg-2>{{product.price * product.category.taxPercentage / 100}}₹ </ion-col>
+            <ion-col col-3 col-lg-2>{{product.totalPrice}}₹ </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-grid>
+    {{products | json}}
+</ion-content>
