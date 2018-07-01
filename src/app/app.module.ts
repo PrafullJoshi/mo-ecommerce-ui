@@ -20,6 +20,8 @@ import { CartPageModule } from '../pages/cart/cart.module';
 import { CartSummaryPage } from '../pages/cart-summary/cart-summary';
 import { CartSummaryPageModule } from '../pages/cart-summary/cart-summary.module';
 import { OrderServiceProvider } from '../providers/order-service/order-service';
+import { OrdersPage } from '../pages/orders/orders';
+import { OrdersPageModule } from '../pages/orders/orders.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { OrderServiceProvider } from '../providers/order-service/order-service';
     TabsPage,
     ProductsPage,
     CartPage,
-    CartSummaryPage
+    CartSummaryPage,
+    OrdersPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { OrderServiceProvider } from '../providers/order-service/order-service';
     TabsPage,
     ProductsPage,
     CartPage,
-    CartSummaryPage
+    CartSummaryPage,
+    OrdersPage
   ],
   providers: [
     StatusBar,
@@ -55,6 +59,7 @@ import { OrderServiceProvider } from '../providers/order-service/order-service';
     ProductsPageModule,
     CartPageModule,
     CartSummaryPageModule,
+    OrdersPageModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductServiceProvider,
     OrderServiceProvider

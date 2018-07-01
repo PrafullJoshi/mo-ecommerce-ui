@@ -13,6 +13,7 @@ import 'rxjs/add/operator/map';
 export class OrderServiceProvider {
 
   checkoutOrderEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/order";
+  getOrdersEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/order";
 
   constructor(public http: HttpClient) {
     console.log('Hello OrderServiceProvider Provider');
@@ -22,6 +23,14 @@ export class OrderServiceProvider {
     return this.http.post(this.checkoutOrderEndPoint, order)
       .map(response => {
         console.log('Order placed with response as', response);
+        return response;
+      });
+  }
+
+  getOrders(): Observable<any> {
+    return this.http.get(this.getOrdersEndPoint)
+      .map(response => {
+        console.log('All Orders received with response as', response);
         return response;
       });
   }
