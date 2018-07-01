@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { OrderServiceProvider } from '../../providers/order-service/order-service';
 
 /**
@@ -26,7 +26,8 @@ export class CartSummaryPage {
     public alertController: AlertController,
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public orderService: OrderServiceProvider) {
+    public orderService: OrderServiceProvider,
+    public toastController: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -63,6 +64,12 @@ export class CartSummaryPage {
       .subscribe(response => {
         console.log('Order checked out with response as', response);
         if(response.orderId) {
+          this.toastController.create({
+            message: 'Order Successfully Placed. You can see details in Orders Tab.',
+            duration: 5000,
+            position: 'top'
+          }).present();
+
           this.handleSuccess();
           /* let alert = this.alertController.create({
             title: 'Success',
