@@ -27,7 +27,7 @@
               </button>
           </ion-col>
           <ion-col col-3>
-              <ion-toggle checked="false"></ion-toggle>
+              <ion-toggle checked="false" (ionChange)="productClicked(product, $event)"></ion-toggle>
               <!-- <button ion-button icon-only clear>
                 <ion-icon name="add"></ion-icon>
               </button> -->

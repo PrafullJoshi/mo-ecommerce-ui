@@ -35,4 +35,14 @@ export class ProductsPage {
         this.products = response;
       });
   }
+
+  productClicked(product: any, toggle: any) {
+    //console.log(product);
+    console.log(toggle.checked);
+    if(toggle.checked) {
+      this.productService.addSelectedProduct(product);
+    } else {
+      this.productService.removeSelectedProduct(product);
+    }
+  }
 }

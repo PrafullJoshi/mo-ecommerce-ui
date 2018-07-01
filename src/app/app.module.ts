@@ -15,6 +15,8 @@ import { ProductsPageModule } from '../pages/products/products.module';
 import { ProductServiceProvider } from '../providers/product-service/product-service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { CartPage } from '../pages/cart/cart';
+import { CartPageModule } from '../pages/cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactPage,
     HomePage,
     TabsPage,
-    ProductsPage
+    ProductsPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -38,12 +41,14 @@ import { HttpClientModule } from '@angular/common/http';
     ContactPage,
     HomePage,
     TabsPage,
-    ProductsPage
+    ProductsPage,
+    CartPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ProductsPageModule,
+    CartPageModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductServiceProvider
   ]

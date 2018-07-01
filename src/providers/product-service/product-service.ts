@@ -12,16 +12,41 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ProductServiceProvider {
+  products: any;
+
+  selectedProducts: any[] = [];
 
   productListEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/products";
   constructor(public http: HttpClient) {
     console.log('Hello ProductServiceProvider Provider');
+
+  }
+
+  addSelectedProduct(product: any) {
+    this.selectedProducts.push(product);
+  }
+
+  removeSelectedProduct(product: any) {
+    const index: number = this.selectedProducts.indexOf(product);
+    if(index !== -1) {
+      this.selectedProducts.splice(index, 1);
+    }
+  }
+
+  getSelectedProducts(): any[] {
+    return this.selectedProducts;
   }
 
   getProdcuts(): Observable<any> {
-    return this.http.get(this.productListEndPoint)
+    if(this.products) {
+      return this.products;
+    } else {
+      return this.http.get(this.productListEndPoint)
       .map(response => {
+        this.products = response;
         return response;
       });
+    }
+    
   }
 }
