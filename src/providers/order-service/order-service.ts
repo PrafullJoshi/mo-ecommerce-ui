@@ -12,8 +12,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class OrderServiceProvider {
 
-  checkoutOrderEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/order";
-  getOrdersEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/order";
+  baseUrl: string = "http://mediaocean-ecommerce.us-east-2.elasticbeanstalk.com/mo-ecomm";
+  // baseUrl: string = "http://localhost:8080/mo-ecomm";
+
+  checkoutOrderEndPoint: string = this.baseUrl + "/api/v1/order";
+  getOrdersEndPoint: string = this.baseUrl + "/api/v1/order";
 
   constructor(public http: HttpClient) {
     console.log('Hello OrderServiceProvider Provider');

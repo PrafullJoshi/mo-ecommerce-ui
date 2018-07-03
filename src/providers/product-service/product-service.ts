@@ -16,8 +16,11 @@ export class ProductServiceProvider {
   products: any;
   selectedProducts: any[] = [];
 
-  productListEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/products";
-  loadDummyProductsEndPoint: string = "http://localhost:8080/mo-ecomm/api/v1/products/load";
+  baseUrl: string = "http://mediaocean-ecommerce.us-east-2.elasticbeanstalk.com/mo-ecomm";
+  // baseUrl: string = "http://localhost:8080/mo-ecomm";
+
+  productListEndPoint: string = this.baseUrl + "/api/v1/products";
+  loadDummyProductsEndPoint: string = this.baseUrl + "/api/v1/products/load";
   
   constructor(public http: HttpClient) {
     console.log('Hello ProductServiceProvider Provider');
